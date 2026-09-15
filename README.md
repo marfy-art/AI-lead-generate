@@ -21,10 +21,13 @@ Visit `/login` to test the auth surface. Without Supabase environment values it 
 ## Quality checks
 
 ```bash
+npm run lint
 npm run typecheck
 npm test
 npm run build
 ```
+
+Run the complete local/CI gate with `npm run ci`.
 
 ## Architecture
 

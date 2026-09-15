@@ -34,6 +34,8 @@ Updated: 2026-09-15
 - Durable repositories now cover projects, business analyses, discovered candidates and evidence, workspace/provider settings, saved views, suppression entries, AI model configurations, background jobs, provider usage, and audit events.
 - AI provider keys use AES-256-GCM encryption at rest and are decrypted only immediately before a server-side provider call; public API output contains only a masked key.
 - Database migrations `0004` and `0005` add workspace settings, masked suppression labels, and provider-attempt status tracking.
+- GitHub Actions runs the locked install, lint, strict typecheck, all tests, and production build on pushes and pull requests; Dependabot checks npm and Actions dependencies weekly.
+- Global response headers add clickjacking, MIME-sniffing, referrer, cross-origin opener, camera, microphone, and geolocation protections.
 - Quality baseline: 62 unit tests across 20 files, lint and strict typecheck passing. Production build is re-verified after each integration batch.
 
 ## In progress / next
