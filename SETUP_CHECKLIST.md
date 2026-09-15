@@ -2,11 +2,11 @@
 
 The application is complete and safe in mock mode. Real provider and durable production mode require account-owned credentials; never paste secret keys into chat or commit them to source control.
 
-## 1. Supabase — project connected, new migrations pending
+## 1. Supabase — project and migrations connected
 
-Completed: the project is healthy in South Asia, migrations `0000` through `0003` are applied, email authentication is enabled, and the localhost callback is allow-listed. The publishable project configuration is present locally. Durable workspace-scoped repositories are implemented in the application.
+Completed: the project is healthy in South Asia, migrations `0000` through `0005` are applied, workspace settings RLS and its member policy are verified, email authentication is enabled, and the localhost callback is allow-listed. The publishable project configuration is present locally. Durable workspace-scoped repositories are implemented in the application.
 
-Remaining: add `DATABASE_URL`, apply migrations `0004` and `0005`, then verify workspace isolation before importing real contacts.
+Remaining: add `DATABASE_URL`, then verify workspace isolation with two authenticated users before importing real contacts. The existing database password cannot be viewed; do not reset it without confirming that no existing connection depends on it.
 
 ## 2. AI model
 

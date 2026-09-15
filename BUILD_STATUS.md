@@ -28,7 +28,7 @@ Updated: 2026-09-15
 - Database-backed saved views, configurable provider enable/order controls, failed-job monitoring/retry UI, and mock-safe in-memory fallbacks.
 - Stable lead scoring, field provenance, and bulk enrichment APIs wired into the lead workspace.
 - Safe `.env.local` scaffold, production setup checklist, and a secret-safe `npm run setup:check` readiness command.
-- Supabase project provisioned in South Asia, migrations `0000` through `0003` applied successfully, automatic RLS enabled for those tables, email authentication enabled, localhost callback allow-listed, and the local app connected with its publishable configuration.
+- Supabase project provisioned in South Asia, migrations `0000` through `0005` applied successfully, workspace settings RLS/member policy verified, email authentication enabled, localhost callback allow-listed, and the local app connected with its publishable configuration.
 - Dedicated Google Cloud project created for SignalDesk; Places API remains optional because it requires card verification. OpenStreetMap is available as the card-free low-volume lookup fallback.
 - Authenticated workspace resolution maps the UI's `demo` alias to the signed-in user's real workspace and checks explicit workspace/project membership.
 - Durable repositories now cover projects, business analyses, discovered candidates and evidence, workspace/provider settings, saved views, suppression entries, AI model configurations, background jobs, provider usage, and audit events.
@@ -40,7 +40,7 @@ Updated: 2026-09-15
 
 ## In progress / next
 
-- Add the direct PostgreSQL connection and stable encryption secrets, then apply migrations `0004` and `0005` to the hosted database.
+- Add the direct PostgreSQL connection and stable encryption secrets to the local and hosted environments.
 - Exercise the durable repositories against the hosted database and verify workspace isolation/RLS with two authenticated test users.
 - Validate Google Places and Hunter against the user's accounts and real quotas after credentials are configured.
 - Validate Apollo people-result ranking and enrichment against the user's account after an Apollo key/plan is available.
