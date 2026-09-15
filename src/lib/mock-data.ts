@@ -1,0 +1,85 @@
+import type { Lead } from "./types";
+
+export const leads: Lead[] = [
+  {
+    id: "lead-001", side: "buyer", company: "Aarong Earth", person: "Nabila Rahman", role: "Brand Manager",
+    initials: "NR", avatarTone: "bg-amber-100 text-amber-800", service: "Product Photography", location: "Dhanmondi, Dhaka",
+    score: 92, confidence: 88, intent: "explicit", lastSignal: "2h ago", sourceCount: 4,
+    email: "nabila@aarongearth.example", emailStatus: "Verified", phone: "+880 17•• ••• 1842", phoneType: "Direct work",
+    preferredChannel: "Email", status: "Outreach ready",
+    why: "A current product-launch request explicitly mentions photography and short-form video.",
+    summary: "Lifestyle retailer preparing a new seasonal collection in Dhaka. The public brief directly matches two Kriyakarak creative categories.",
+    decisionReason: "A Brand Manager is likely to own launch creative, coordinate external production, and control the relevant budget.",
+    risk: "The public request does not state a final delivery date or budget.",
+    evidence: [
+      { id: "ev-1", kind: "Observed fact", title: "Public creative brief", excerpt: "Seeking a Dhaka-based product photographer for our upcoming collection.", source: "Company website", date: "Today, 09:40" },
+      { id: "ev-2", kind: "Provider data", title: "Current employment", excerpt: "Nabila Rahman — Brand Manager at Aarong Earth", source: "Mock Apollo", date: "Today, 09:44" },
+      { id: "ev-3", kind: "Provider data", title: "Work email verified", excerpt: "Mailbox validation passed; business domain matched.", source: "Mock Hunter", date: "Today, 09:45" },
+    ],
+    outreach: { subject: "Creative support for Aarong Earth’s upcoming collection", body: "Hi Nabila — I noticed Aarong Earth’s public brief for a Dhaka-based product photographer. Kriyakarak can help you quickly review matched local photographers and short-form video specialists in one place. Would it be useful if I shared a short, relevant shortlist?" },
+  },
+  {
+    id: "lead-002", side: "buyer", company: "North End Coffee", person: "Tanvir Islam", role: "Marketing Lead",
+    initials: "TI", avatarTone: "bg-indigo-100 text-indigo-800", service: "Videography", location: "Gulshan, Dhaka",
+    score: 84, confidence: 81, intent: "commercial", lastSignal: "1d ago", sourceCount: 3,
+    email: "tanvir@northend.example", emailStatus: "Verified", phone: null, phoneType: "Not found", preferredChannel: "Email", status: "Outreach ready",
+    why: "A newly announced location and active campaign suggest a timely need for launch content.",
+    summary: "Multi-location café brand announcing a Gulshan opening. Content needs are inferred from the launch, not explicitly requested.",
+    decisionReason: "The Marketing Lead likely owns launch communications and external creative vendors for a multi-location brand.",
+    risk: "Photography or video need is inferred from the launch campaign.",
+    evidence: [
+      { id: "ev-4", kind: "Observed fact", title: "New location announced", excerpt: "A new Gulshan location is opening this month.", source: "Company news", date: "Yesterday" },
+      { id: "ev-5", kind: "AI inference", title: "Launch-content opportunity", excerpt: "A location launch may create demand for photo, video, or social content.", source: "SignalDesk", date: "Yesterday" },
+    ],
+    outreach: { subject: "Local creative options for the Gulshan launch", body: "Hi Tanvir — congratulations on North End Coffee’s newly announced Gulshan location. If extra launch-content capacity would help, Kriyakarak can connect your team with vetted Dhaka photographers and video creators. Happy to share a focused shortlist." },
+  },
+  {
+    id: "lead-003", side: "seller", company: "Frame & Light Studio", person: "Samia Noor", role: "Founder & Photographer",
+    initials: "SN", avatarTone: "bg-rose-100 text-rose-800", service: "Photography", location: "Banani, Dhaka",
+    score: 87, confidence: 91, intent: "fit", lastSignal: "3d ago", sourceCount: 5,
+    email: "hello@frameandlight.example", emailStatus: "Verified", phone: "+880 18•• ••• 7704", phoneType: "Direct work", preferredChannel: "Instagram", status: "Outreach ready",
+    why: "A recent commercial portfolio, Dhaka service area, and direct business contact make this a strong seller match.",
+    summary: "Independent studio specializing in food, product, and event photography with a current public portfolio.",
+    decisionReason: "As founder and working photographer, Samia owns the decision to join a service marketplace.",
+    risk: "Availability and interest in marketplace work are not yet known.",
+    evidence: [
+      { id: "ev-6", kind: "Observed fact", title: "Active professional portfolio", excerpt: "Recent food, product, and event work is publicly displayed.", source: "Portfolio website", date: "3 days ago" },
+      { id: "ev-7", kind: "Observed fact", title: "Dhaka service area", excerpt: "Studio lists Dhaka and nearby areas for bookings.", source: "Business profile", date: "3 days ago" },
+    ],
+    outreach: { subject: "More local project opportunities for Frame & Light", body: "Hi Samia — your recent food and product work looks closely aligned with categories buyers search on Kriyakarak. We’re inviting a small group of Dhaka professionals to create profiles and receive relevant local opportunities. Would you like the details?" },
+  },
+  {
+    id: "lead-004", side: "buyer", company: "Shobdo Learning", person: "Farhan Kabir", role: "Co-founder",
+    initials: "FK", avatarTone: "bg-emerald-100 text-emerald-800", service: "Web Development", location: "Uttara, Dhaka",
+    score: 73, confidence: 64, intent: "inferred", lastSignal: "6d ago", sourceCount: 2,
+    email: "farhan@shobdo.example", emailStatus: "Unverified", phone: null, phoneType: "Not found", preferredChannel: "LinkedIn", status: "Needs review",
+    why: "A product launch and dated landing page indicate potential web support, but no explicit need was found.",
+    summary: "Early-stage education business promoting a new cohort while using an older, poorly optimized marketing site.",
+    decisionReason: "At a small company, the co-founder is likely to own both product and website purchasing decisions.",
+    risk: "The service need is inferred and the work email is not verified.",
+    evidence: [
+      { id: "ev-8", kind: "Observed fact", title: "New cohort launch", excerpt: "Enrollment for a new professional learning cohort is open.", source: "Public announcement", date: "6 days ago" },
+      { id: "ev-9", kind: "AI inference", title: "Conversion-page opportunity", excerpt: "The current campaign page may benefit from clearer mobile conversion paths.", source: "SignalDesk", date: "6 days ago" },
+    ],
+    outreach: { subject: "A small idea for Shobdo’s cohort launch", body: "Hi Farhan — I saw Shobdo’s new cohort announcement. If your team is exploring extra support for the campaign site, Kriyakarak can match you with local web specialists. I can share a few relevant profiles if useful." },
+  },
+  {
+    id: "lead-005", side: "seller", company: "PixelCraft BD", person: "Rafi Ahmed", role: "Freelance Designer",
+    initials: "RA", avatarTone: "bg-sky-100 text-sky-800", service: "Graphic Design", location: "Mirpur, Dhaka",
+    score: 69, confidence: 72, intent: "fit", lastSignal: "12d ago", sourceCount: 2,
+    email: null, emailStatus: "Not found", phone: null, phoneType: "Not found", preferredChannel: "Instagram", status: "Watchlist",
+    why: "The portfolio fits Kriyakarak’s design category, but business contact evidence is incomplete.",
+    summary: "Freelance designer with relevant brand and menu work in the target market.",
+    decisionReason: "The individual is the marketplace onboarding decision-maker.",
+    risk: "No verified business email or direct business phone is available.",
+    evidence: [{ id: "ev-10", kind: "Observed fact", title: "Relevant portfolio", excerpt: "Brand identity and restaurant menu projects are publicly shown.", source: "Public portfolio", date: "12 days ago" }],
+    outreach: { subject: "Kriyakarak designer invitation", body: "Hi Rafi — your public brand and menu design portfolio aligns with requests that appear on Kriyakarak. If you’re open to local project opportunities, I’d be glad to share how provider profiles work." },
+  },
+];
+
+export const stats = [
+  { label: "Total leads", value: "248", change: "+18 this week", tone: "ink" },
+  { label: "High intent", value: "46", change: "18.5% of total", tone: "green" },
+  { label: "Outreach ready", value: "112", change: "+9 since Monday", tone: "blue" },
+  { label: "Needs review", value: "31", change: "7 missing evidence", tone: "amber" },
+];

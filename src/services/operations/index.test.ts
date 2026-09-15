@@ -1,0 +1,4 @@
+import {beforeEach,describe,expect,it} from "vitest";
+import {clearOperationsForTests,getOperations,recordAudit,recordUsage} from ".";
+beforeEach(clearOperationsForTests);
+describe("operations tracking",()=>{it("aggregates provider usage by workspace",()=>{recordUsage({workspaceId:"w",projectId:"p",provider:"hunter",capability:"email_find",units:1,estimatedCost:.01,status:"success"});recordUsage({workspaceId:"w",projectId:"p",provider:"hunter",capability:"email_verify",units:.5,estimatedCost:.005,status:"failed"});expect(getOperations("w")).toMatchObject({summary:{calls:2,units:1.5,estimatedCost:.015},providers:[{provider:"hunter",calls:2,successes:1}]});});it("keeps audit metadata separate by workspace",()=>{recordAudit({workspaceId:"w",action:"suppression.added",entityType:"suppression",entityId:"x",metadata:{type:"email"}});expect(getOperations("w").audit).toHaveLength(1);expect(getOperations("other").audit).toHaveLength(0);});});

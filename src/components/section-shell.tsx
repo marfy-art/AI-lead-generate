@@ -1,0 +1,4 @@
+import type {ReactNode} from "react";
+import {AppSidebar,MobileNavigation} from "@/components/app-navigation";
+
+export function SectionShell({title,description,action,children}:{title:string;description:string;action?:ReactNode;children:ReactNode}){return <div className="min-h-screen bg-[#f4f6f3] text-[#243229]"><AppSidebar/><main className="app-main ml-[232px] min-h-screen transition-all"><MobileNavigation/><div className="px-5 py-6 lg:px-9"><div className="mx-auto max-w-6xl"><header className="flex flex-wrap items-end justify-between gap-4 border-b border-[#dde3de] pb-6"><div><h1 className="font-display text-3xl font-extrabold tracking-tight">{title}</h1><p className="mt-2 max-w-2xl text-base leading-6 text-[#667169]">{description}</p></div>{action}</header><div className="py-6">{children}</div></div></div></main></div>;}

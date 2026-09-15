@@ -1,0 +1,7 @@
+export type UsageEvent={workspaceId:string;projectId:string;provider:string;capability:string;units:number;estimatedCost:number;status:string;createdAt:string};
+export type AuditEvent={workspaceId:string;action:string;entityType:string;entityId:string;metadata:Record<string,unknown>;createdAt:string};
+const usageEvents:UsageEvent[]=[];const auditEvents:AuditEvent[]=[];
+export function recordUsage(event:Omit<UsageEvent,"createdAt">){usageEvents.push({...event,createdAt:new Date().toISOString()});}
+export function recordAudit(event:Omit<AuditEvent,"createdAt">){auditEvents.push({...event,createdAt:new Date().toISOString()});}
+export function getOperations(workspaceId:string){const usage=usageEvents.filter(event=>event.workspaceId===workspaceId);const providers=Object.values(usage.reduce<Record<string,{provider:string;calls:number;units:number;estimatedCost:number;successes:number}>>((all,event)=>{const item=all[event.provider]??={provider:event.provider,calls:0,units:0,estimatedCost:0,successes:0};item.calls++;item.units+=event.units;item.estimatedCost+=event.estimatedCost;if(event.status==="success")item.successes++;return all;},{}));return {summary:{calls:usage.length,units:usage.reduce((sum,event)=>sum+event.units,0),estimatedCost:usage.reduce((sum,event)=>sum+event.estimatedCost,0)},providers,audit:auditEvents.filter(event=>event.workspaceId===workspaceId).slice(-50).reverse()};}
+export function clearOperationsForTests(){usageEvents.length=0;auditEvents.length=0;}

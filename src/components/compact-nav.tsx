@@ -1,0 +1,3 @@
+import Link from "next/link";
+const links=[["/","Lead workspace"],["/overview","Overview"],["/projects","Projects"],["/lists","Lists"],["/sources","Sources"],["/settings/providers","Providers"],["/settings/ai-models","AI models"],["/settings/usage","Usage"],["/monitoring","Jobs"],["/settings/suppression","Suppression"],["/settings","Admin"]] as const;
+export function CompactNav(){return <nav aria-label="Section navigation" className="scrollbar-thin mt-5 flex gap-2 overflow-x-auto pb-2">{links.map(([href,label])=><Link key={href.toString()} href={href.toString()} className="whitespace-nowrap rounded-full border border-[#dce3dd] bg-white px-3 py-2 text-sm font-semibold text-[#526159] hover:border-[#779282] hover:text-[#285d47]">{label}</Link>)}</nav>;}

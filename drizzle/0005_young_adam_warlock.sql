@@ -1,0 +1,1 @@
+ALTER TABLE "provider_usage" ADD COLUMN "status" text DEFAULT 'success' NOT NULL;

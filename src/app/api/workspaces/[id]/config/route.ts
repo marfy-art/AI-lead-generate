@@ -1,0 +1,10 @@
+import {NextResponse} from "next/server";
+import {z} from "zod";
+import {resolveWorkspace,WorkspaceAccessError} from "@/lib/workspace/context";
+import {getWorkspaceConfigPersistent,updateWorkspaceConfigPersistent} from "@/services/persistence/workspace-config";
+import {recordAuditPersistent} from "@/services/persistence/operations";
+
+const provider=z.object({id:z.string().min(1),name:z.string().min(1),enabled:z.boolean(),priority:z.number().int().positive(),capabilities:z.array(z.string()),estimatedCost:z.string(),termsReviewStatus:z.enum(["approved","pending","not_required"])});
+const schema=z.object({leadThreshold:z.number().int().min(0).max(100).optional(),confidenceThreshold:z.number().int().min(0).max(100).optional(),retentionDays:z.number().int().min(1).max(3650).optional(),mockMode:z.boolean().optional(),services:z.array(z.string().trim().min(1)).min(1).max(100).optional(),providers:z.array(provider).min(1).max(30).optional()});
+export async function GET(_:Request,{params}:{params:Promise<{id:string}>}){try{const {id}=await params;const context=await resolveWorkspace(id);return NextResponse.json({config:await getWorkspaceConfigPersistent(context.workspaceId),mode:context.mode});}catch(error){if(error instanceof WorkspaceAccessError)return NextResponse.json({error:error.message},{status:error.status});throw error;}}
+export async function PATCH(request:Request,{params}:{params:Promise<{id:string}>}){const {id}=await params;const parsed=schema.safeParse(await request.json().catch(()=>null));if(!parsed.success)return NextResponse.json({error:"Invalid workspace settings",issues:parsed.error.issues},{status:400});try{const context=await resolveWorkspace(id);const config=await updateWorkspaceConfigPersistent(context.workspaceId,parsed.data);await recordAuditPersistent({workspaceId:context.workspaceId,action:"workspace.settings_updated",entityType:"workspace",entityId:context.workspaceId,metadata:{fields:Object.keys(parsed.data)}});return NextResponse.json({config,mode:context.mode});}catch(error){if(error instanceof WorkspaceAccessError)return NextResponse.json({error:error.message},{status:error.status});throw error;}}

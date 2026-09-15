@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+:root {
+  --ink: #17211b;
+  --muted: #667069;
+  --line: #e2e7e3;
+  --panel: #ffffff;
+  --canvas: #f4f6f3;
+  --green: #27634b;
+  --green-2: #e4f2eb;
+  --lime: #ccec72;
+}
+
+* { box-sizing: border-box; }
+html { background: var(--canvas); }
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--canvas);
+  font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 14px;
+}
+button, input { font: inherit; }
+button { cursor: pointer; }
+::selection { background: #dceda8; color: #17211b; }
+
+.font-display { font-family: Manrope, Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+.scrollbar-thin { scrollbar-width: thin; scrollbar-color: #c7d0c9 transparent; }
+.surface-shadow { box-shadow: 0 1px 2px rgb(23 33 27 / .04), 0 12px 30px rgb(23 33 27 / .05); }
+.drawer-shadow { box-shadow: -18px 0 44px rgb(23 33 27 / .12); }
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-in { animation: fade-in .24s ease-out both; }
+
+@media (max-width: 1080px) {
+  .app-sidebar { width: 76px !important; }
+  .app-sidebar .sidebar-label,
+  .app-sidebar .brand-copy,
+  .app-sidebar .workspace-copy,
+  .app-sidebar .upgrade-card { display: none; }
+  .app-main { margin-left: 76px !important; }
+}
+
+@media (max-width: 720px) {
+  .app-sidebar { display: none; }
+  .app-main { margin-left: 0 !important; }
+  .mobile-nav { display: flex !important; gap: .4rem; }
+  .metric-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+  .desktop-only { display: none !important; }
+  .page-pad { padding-left: 16px !important; padding-right: 16px !important; }
+}

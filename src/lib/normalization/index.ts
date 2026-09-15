@@ -1,0 +1,3 @@
+export function normalizeDomain(value: string) { return value.trim().toLowerCase().replace(/^https?:\/\//, "").replace(/^www\./, "").split("/")[0].replace(/\.$/, ""); }
+export function normalizePhone(value: string) { const digits = value.replace(/\D/g, ""); return digits.startsWith("880") ? `+${digits}` : digits.startsWith("0") ? `+880${digits.slice(1)}` : `+${digits}`; }
+export function classifyPhone(metadata: { direct?: boolean; mobile?: boolean; companyLevel?: boolean }) { if (metadata.companyLevel) return "company_main" as const; if (metadata.direct && metadata.mobile) return "direct_mobile" as const; if (metadata.direct) return "direct_work" as const; return "unknown" as const; }

@@ -1,0 +1,8 @@
+import { describe, expect, it } from "vitest";
+import { MockProvider } from "../../providers/mock";
+import { runWaterfall } from "./waterfall";
+describe("provider waterfall", () => {
+  it("stops after quality threshold is met", async () => { const first = new MockProvider("first", ["email_find"], .95, 1); const second = new MockProvider("second", ["email_find"], .99, 1); const result = await runWaterfall([first,second], { capability:"email_find", projectId:"p", leadId:"l" }, { budget:5, confidenceThreshold:.9 }); expect(result.stoppedBecause).toBe("quality_met"); expect(result.attempts).toHaveLength(1); });
+  it("does not run over budget", async () => { const provider = new MockProvider("paid", ["email_find"], .95, 2); const result = await runWaterfall([provider], { capability:"email_find", projectId:"p", leadId:"l" }, { budget:1, confidenceThreshold:.9 }); expect(result.stoppedBecause).toBe("budget_exhausted"); expect(result.attempts).toEqual([{provider:"paid",capability:"email_find",status:"skipped",costUnits:0,reason:"budget_insufficient"}]); });
+  it("continues to a free fallback when a paid provider exceeds budget", async () => { const paid = new MockProvider("paid", ["company_search"], .95, 2); const free = new MockProvider("free", ["company_search"], .95, 0); const result = await runWaterfall([paid,free], { capability:"company_search", projectId:"p", leadId:"l" }, { budget:0, confidenceThreshold:.9 }); expect(result.stoppedBecause).toBe("quality_met"); expect(result.attempts).toEqual([{provider:"paid",capability:"company_search",status:"skipped",costUnits:0,reason:"budget_insufficient"},{provider:"free",capability:"company_search",status:"success",costUnits:0}]); });
+});
