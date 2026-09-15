@@ -4,7 +4,7 @@ The application is complete and safe in mock mode. Real provider and durable pro
 
 ## 1. Supabase — project and migrations connected
 
-Completed: the project is healthy in South Asia, migrations `0000` through `0005` are applied, workspace settings RLS and its member policy are verified, email authentication is enabled, and the localhost callback is allow-listed. The publishable project configuration is present locally. Durable workspace-scoped repositories are implemented in the application.
+Completed: the project is healthy in South Asia, migrations `0000` through `0005` are applied, all 27 public application tables have RLS enabled, the workspace settings member policy is verified, email authentication is enabled, and the localhost callback is allow-listed. Tables without an explicit policy remain deny-by-default through the Supabase Data API; the application uses authenticated server routes and workspace checks. The publishable project configuration is present locally. Durable workspace-scoped repositories are implemented in the application.
 
 Remaining: add `DATABASE_URL`, then verify workspace isolation with two authenticated users before importing real contacts. The existing database password cannot be viewed; do not reset it without confirming that no existing connection depends on it.
 
