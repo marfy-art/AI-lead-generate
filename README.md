@@ -74,4 +74,4 @@ The domain layer owns scoring, qualification, provenance, and contact classifica
 - Public Nominatim lookup is disabled by default. When opted in it is cached, serialized to at most one request per second, identified with a custom user agent, and attributed to OpenStreetMap contributors; it is not a bulk discovery source.
 - V1 drafts outreach for human review and does not perform mass sending.
 
-See [BUILD_STATUS.md](./BUILD_STATUS.md) for progress and [DECISIONS.md](./DECISIONS.md) for implementation choices.
+See [BUILD_STATUS.md](./BUILD_STATUS.md) for completed work, [REMAINING_WORK.md](./REMAINING_WORK.md) for the production checklist, and [DECISIONS.md](./DECISIONS.md) for implementation choices.
